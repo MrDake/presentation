@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Grid layout</title>
+
+		<meta name="description" content="CSS Grid Layout is the most powerful layout system currently available in CSS">
+		<meta name="author" content="Daulet Barakov">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				
+				<section>
+					<h1>CSS Grid Layout</h1>
+					<h4>the most powerful layout system currently available in CSS</h4>
+					<small>by Daulet Barakov</small>
+					<aside class="notes">
+						Hello my name is Daulet.<br>
+						And I'll talk about the most powerful layout system currently available in CSS.<br>
+						THE GRIIID
+					</aside>
+				</section>
+
+				<section>
+					<h3>About:</h3>
+					<ol style="word-wrap: normal">
+						<li>What is a GRID?</li>
+						<li>Browser support</li>
+						<li>Basic terms</li>
+						<li>Container properties</li>
+						<li>Properties of items</li>
+					</ol>
+					<aside class="notes">
+							These are parts of my speach<br>
+							1. What is a GRID?<br>
+							2. Browser support<br>
+							3. Basic terms<br>
+							4. Container properties<br>
+							5. Properties of items<br>
+					</aside>
+				</section>
+				
+				<section>
+
+					<section>
+						<h1>What is a GRID?</h1>
+						<aside class="notes">
+							What is a GRID?
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>What is a GRID?</h3>
+						<p>
+							<small>
+								<span class="fragment fade-in-then-semi-out">CSS Grid Layout (aka "Grid") is a <span class="fragment highlight-blue">two-dimensional grid-based layout system</span></span>, 
+								<span class="fragment fade-in-then-semi-out">the purpose of which is to completely change the way that web-based user interfaces are designed.</span> 
+								<span class="fragment fade-in-then-semi-out">CSS was always used to lay out web pages,</span> <span class="fragment fade-in-then-semi-out">but it never did a good job.</span>
+								<span class="fragment fade-in-then-semi-out">At first we used tables,</span> <span class="fragment fade-in-then-semi-out">then wrap (floats),</span> <span class="fragment fade-in-then-semi-out">positioning and inline blocks (inline-block),</span> 
+								<span class="fragment fade-in-then-semi-out">but all of these methods are essentially just hacks and omit many important functionalities</span> <span class="fragment fade-in-then-semi-out">(for example, vertical alignment).</span> 
+								<span class="fragment fade-in-then-semi-out">Flexbox helped, but it is designed for simpler one-dimensional layouts, not for complex two-dimensional ones</span> <span class="fragment fade-in-then-semi-out">(in fact, Flexbox and Grid work very well together).</span> 
+								<span class="fragment fade-in-then-semi-out">CSS Grid - this is the first module created specifically to solve layout problems, 
+								which we have solved using hacks when creating websites until now.</span>
+							</small>
+						</p>
+						<aside class="notes">
+							<br>CSS Grid Layout (aka "Grid") is a <span style="text-transform:uppercase; color:blue">two-dimensional grid-based layout system</span>, 
+							<br>
+							<br>the purpose of which is to completely change the way that web-based user interfaces are designed.
+							<br>
+							<br>CSS was always used to layout web pages,
+							<br>
+							<br>but it never did a that job good.
+							<br>
+							<br>At first we used tables,
+							<br>
+							<br>then wrap (floats),
+							<br>
+							<br>positioning and inline blocks (inline-block), 
+							<br>
+							<br>but all of these methods are essentially just hacks and omit many important functionalities
+							<br>
+							<br>(for example, vertical alignment).
+							<br>
+							<br>Flexbox helped, but it is designed for simpler one-dimensional layouts, not for complex two-dimensional ones
+							<br>
+							<br>(in fact, Flexbox and Grid work very well together).
+							<br>
+							<br>CSS Grid - this is the first module created specifically to solve layout problems,
+							which we have solved using hacks when creating websites until now.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+
+					<section>
+						<h1>Browser support</h1>
+						<aside class="notes">
+							Browser support
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Browser support</h3>
+						<a href="https://caniuse.com/#feat=css-grid" target="_blank"><img src="./img/browser-support.png" alt="browser stats"></a>
+						<p style="display: flex; justify-content: space-between">
+							<small>
+								<span style="margin: 50px; color: yellowgreen">Partial support</span>
+								<span style="margin: 50px; color: green">Supported</span>
+								<span style="margin: 50px; color: red">Not supported</span>
+							</small>
+						</p>
+						<ul class="fragment fade-up">Coverage:
+							<li>
+								unprefixed: <span style="color: green">89.78%</span>
+							</li>
+							<li>
+								global: <span style="color: green">89.78%</span> + <span style="color: yellowgreen; font-size: smaller">2.58%</span> = <span style="color: blue">92.36%</span>
+							</li>
+						</ul>
+						<aside class="notes">
+							Here we see the table that shows current browsers and the numbers of their stable versions that work with Grid.
+							<br>
+							<br>As we can see the full coverage is:
+							<br>without prefix - around 89.78%
+							<br>global - around 92.36%
+							<br><br>that maens we can use grid almost in any browser today
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					
+					<section>
+						<h1>Basic terms</h1>
+						<aside class="notes">
+							Basic terms
+						</aside>
+					</section>
+
+					<section style="text-align: start;">
+						<h3>Basic terms</h3>
+						<div style="display: flex">
+							<img src="./img/basic-terms.jpg" alt="basic-terms" width="650px" height="500px">
+							<ul style="list-style-type: none">
+								<li>
+									<pre><code class="html" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 400px">
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt; 
+  &lt;div class=&quot;item&quot;&gt;
+    &lt;p class=&quot;sub-item&quot;&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+									</code></pre>
+								</li>
+								<li>
+									<div style="display: flex">
+										<small>
+											<ul style="line-height: 200%">
+												<li>track (column)</li>
+												<li>track (row)</li>
+												<li>cell</li>
+												<li>area</li>
+											</ul>
+										</small>
+										<small>
+											<ul style="line-height: 200%">
+												<li>container</li>
+												<li>item</li>
+												<li>sub-item</li>
+											</ul>
+										</small>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Here we see the basic elements of the grid which we will discuss in the next slides
+							
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Basic terms</h3>
+						<article style="display: flex">
+							<ul style="font-size: 1.5rem">
+								<li class="" style="margin: 20px"><b style="color: blue"><u>Grid container</u></b> the element to which the <em style="color: rgb(238, 241, 11)">display: grid</em> applies. This is the direct parent for all grid elements. In this example, <em style="color: rgb(238, 241, 11)">container</em> is div with class container .</li>
+								<li class="fragment" style="margin: 20px"><b style="color: blue"><u>Grid item</u></b> the child elements of the container. Here <em style="color: rgb(238, 241, 11)">item</em> is a grid item, but not a <em style="color: rgb(238, 241, 11)">sub-item.</em></li>
+								<li class="fragment" style="margin: 20px"><em style="color: blue">Sub-item</em> the child of grid item. And it does not inherit the grid.</li>
+							</ul>
+							<pre><code class="html" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 400px; height: 280px">
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt; 
+  &lt;div class=&quot;item&quot;&gt;
+    &lt;p class=&quot;sub-item&quot;&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+							</code></pre>
+						</article>
+						<aside class="notes">
+								Grid container the element to which the display: grid applies. 
+								This is the direct parent for all grid elements. In this example, container is a div with class container .
+								<br>Grid item the child elements of the container. Here item is a grid item, but not a sub-item.
+								<br>Sub-item the child of grid item. And it does not inherit the grid.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Grid lines</h3>
+						<article style="display: flex">
+							<ul style="font-size: 1.5rem">
+								<li style="margin: 20px">Grid lines is the horizontal and vertical grid container delimiters. These lines are on either side of a column or row. They have direct and reverse numbering.</li>
+							</ul>
+							<img src="./img/basic-terms.jpg" alt="basic-terms" width="520px" height="400px">
+						</article>
+						<aside class="notes">
+							Grid lines is the horizontal and vertical grid container delimiters. These lines are on either side of a column or row. They have direct and reverse numbering.	
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Grid track. Column and Row</h3>
+						<article style="display: flex">
+							<ul style="font-size: 1.5rem">
+								<li style="margin: 20px">Grid track is the space between two adjacent grid lines, vertical (Column) or horizontal (Row).</li>
+							</ul>
+							<img src="./img/basic-terms.jpg" alt="basic-terms" width="520px" height="400px">
+						</article>
+						<aside class="notes">
+							Grid track is the space between two adjacent grid lines, vertical (Column) or horizontal (Row).	
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Grid cell</h3>
+						<article style="display: flex">
+							<ul style="font-size: 1.5rem">
+								<li style="margin: 20px">A grid cell is the smallest indivisible unit of a grid container that can be referenced when positioning grid elements. Formed at the intersection of the grid row and grid column.</li>
+							</ul>
+							<img src="./img/basic-terms.jpg" alt="basic-terms" width="520px" height="400px">
+						</article>
+						<aside class="notes">
+							A grid cell is the smallest indivisible unit of a grid container that can be referenced when positioning grid elements. Formed at the intersection of the grid row and grid column.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Grid area</h3>
+						<article style="display: flex">
+							<ul style="font-size: 1.5rem">
+								<li style="margin: 20px">A grid area is the space inside the grid of a container into which one or more grid elements can be placed. This element can consist of one or more grid cells.</li>
+							</ul>
+							<img src="./img/basic-terms.jpg" alt="basic-terms" width="520px" height="400px">
+						</article>
+						<aside class="notes">
+							A grid area is the space inside the grid of a container into which one or more grid elements can be placed. This element can consist of one or more grid cells.
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h1>Container properties</h1>
+						<aside class="notes">
+							Container properties
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>Container properties</h3>
+						<div style="display: flex">
+							<ul style="margin: 0px 50px">
+								<li>display</li>
+								<li>grid-template-columns</li>
+								<li>grid-template-rows</li>
+								<li>grid-template-areas</li>
+								<li>grid-template</li>
+								<li>grid-column-gap</li>
+								<li>grid-row-gap</li>
+								<li>grid-gap</li>
+							</ul>
+							<ul style="">
+								<li>justify-items</li>
+								<li>align-items</li>
+								<li>justify-content</li>
+								<li>align-content</li>
+								<li>grid-auto-columns</li>
+								<li>grid-auto-rows</li>
+								<li>grid-auto-flow</li>
+								<li>grid</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Let's talk about the container properties
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>display</h3>
+						<div style="font-size: 1.5rem">
+							Defines the element as a container and sets a new mesh formatting context for its content.
+							<ul style="margin: 20px">Values:
+								<li><span style="color: yellow">grid</span> - forms a grid as a block;</li>
+								<li><span style="color: yellow">inline-grid</span> - forms a grid as an inline block;</li>
+								<li><span style="color: yellow">subgrid</span> - if your container is also an element (nested grid), 
+									then you can use this property to indicate that the row / column sizes 
+									are taken from the parent element and not define your own;</li>
+							</ul>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 100%; line-height: 150%; font-size: 1.5rem">
+.container {
+  display: grid | inline-grid | subgrid;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							display
+							<br>Defines the element as a container and sets a new mesh formatting context for its content.
+							<br>
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-columns & grid-template-rows</h3>
+						<div style="font-size: 1.5rem">
+								Defines the columns and rows of the grid using a list of values separated by spaces. Values represent the size of the track, and the spaces between them represent the grid lines.
+							<ul style="margin: 20px">Values:
+								<li><span style="color: yellow">track-size</span> - can be a fixed size, percentage or part of the free space in the grid (determined using the unit <span style="color: blue">fr</span> (fraction));</li>
+								<li><span style="color: yellow">line-name</span> - arbitrary name of your choice;</li>
+							</ul>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 120%; line-height: 150%; font-size: 1.5rem">
+.container {
+  grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
+  grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							grid-template-columns & grid-template-rows
+							<br>Defines the columns and rows of the grid using a list of values separated by spaces. 
+							Values represent the size of the track, and the spaces between them represent the grid lines.
+							<br>
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-columns & grid-template-rows</h3>
+						<div style="font-size: 1.5rem">
+							<br><br><br>
+							When you leave empty space between track values, the grid lines are automatically assigned numeric names
+							<br><br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 120%; line-height: 150%; font-size: 1.5rem">
+.container{
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 100px auto;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							When you leave empty space between track values, the grid lines are automatically assigned numeric names
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-columns & grid-template-rows</h3>
+						<img style="padding: 20px; background-color: #fff" src="./img/grid-template.png" alt="grid-template" width="650px" height="500px">
+						<aside class="notes">
+							We can see what our previous code would do.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-columns & grid-template-rows</h3>
+						<div style="font-size: 1.5rem">
+							<br><br><br>
+							If your definition contains duplicate parts, you can use the <span style="color: yellow">repeat()</span> notation:
+							<br><br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 120%; line-height: 150%; font-size: 1.5rem">
+.container {
+  grid-template-columns: repeat(3, 20px [col-start]) 5%;
+}
+
+							</code></pre>
+						</div>
+						<aside class="notes">
+							If your definition contains duplicate parts, you can use the repeat() notation: 
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-columns & grid-template-rows</h3>
+						<div style="font-size: 1.5rem">
+							<br><br><br>
+							The <span style="color: yellow">fr</span>(fraction) unit allows you to customize the size of the tracks as part of the free space in the container. Here is an example that sets each element one third the width of the container.
+							<br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 120%; line-height: 150%; font-size: 1.5rem">
+.container {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+								The fr (fraction) unit allows you to customize the size of the tracks as part of the free space in the container. Here is an example that sets each element one third the width of the container. 
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-template-areas</h3>
+						<div style="font-size: 1.5rem">
+								Defines a grid pattern referring to the names of areas that are set using the <span style="color: yellow">grid-area</span> property. 
+								Repetition of the name of the region leads to the fact that the content covers these cells. Dot means empty cell.
+								<ul style="margin: 20px">Values:
+								<li><span style="color: yellow">grid-area-name</span> - the area name specified using the grid-area;</li>
+								<li><span style="color: yellow">.</span> - a point indicating an empty cell;</li>
+								<li><span style="color: yellow">none</span> - areas not defined;</li>
+							</ul>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 100%; line-height: 150%; font-size: 1.5rem">
+.container {
+  grid-template-areas: 
+    &quot;&lt;grid-area-name&gt; | . | none | ...&quot;
+    &quot;...&quot;;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							grid-template-areas
+							Defines a grid pattern referring to the names of areas that are set using the grid-area property. 
+							Repetition of the name of the region leads to the fact that the content covers these cells. 
+							<br>Dot means empty cell.
+							<br>
+							
+						</aside>
+					</section>
+
+					<section>
+						<h3>grid-template-areas</h3>
+						<article style="display: flex">
+							<pre style="transform: translateX(0px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px; line-height: 100%; font-size: 1.2rem">
+.item-a {
+  grid-area: header;
+}
+.item-b {
+  grid-area: main;
+}
+.item-c {
+  grid-area: sidebar;
+}
+.item-d {
+  grid-area: footer;
+}
+.container {
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    &quot;header header header header&quot;
+    &quot;main main . sidebar&quot;
+    &quot;footer footer footer footer&quot;;
+}
+							</code></pre>
+							<ul style="list-style: none">
+								<li><img style="padding: 0px" src="./img/grid-template-areas.png" alt="grid-template-areas" width="400px" height="300px"></li>
+								<li style="font-size: 1.3rem">Notice that you don’t name the lines, just the areas. If you use this syntax, it will be automatically named.</li>
+							</ul>
+							<aside class="notes">
+								Here we see how this code works.
+								<br>Notice 
+								<br>that you don’t name the lines, just the areas. 
+								<br>If you use this syntax, it will be automatically named.
+							</aside>
+
+						</article>
+					</section>
+
+					
+
+					<section style="text-align: start">
+						<h3>grid-column-gap grid-row-gap</h3>
+						<div style="font-size: 1.5rem">
+							Specifies the size of the width of the lines. You can think of this as setting the width of indentations between columns and rows.
+							<br><br>
+							<ul style="margin: 20px">
+								<li>&lt;line-size&gt; - size value;</li>
+							</ul>
+							<br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container {
+  grid-column-gap: &lt;line-size&gt;;
+  grid-row-gap: &lt;line-size&gt;;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							grid-column-gap grid-row-gap
+							<br>Specifies the size of the width of the lines. 
+							<br>You can think of this as setting the width of indentations between columns and rows.
+						</aside>
+					</section>
+
+					<section>
+						<h3>grid-column-gap grid-row-gap</h3>
+						<article style="display: flex">
+							<pre style="transform: translateX(0px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 550px; height: 300px; line-height: 100%; font-size: 1.2rem">
+
+
+								
+
+.container {
+	grid-template-columns: 100px 50px 100px;
+	grid-template-rows: 80px auto 80px; 
+	grid-column-gap: 10px;
+	grid-row-gap: 15px;
+}
+							</code></pre>
+							<ul style="list-style: none">
+								<li><img style="padding: 20px; background-color: #fff;" src="./img/grid-column-row-gap.png" alt="grid-column-row-gap" width="500px" height="300px"></li>
+							</ul>
+							<aside class="notes">
+								Here we can see how this code works. 
+							</aside>
+	
+						</article>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-gap</h3>
+						<div style="font-size: 1.5rem">
+							The abbreviation for grid-row-gap and grid-column-gap.
+							<br><br>
+							<ul style="margin: 20px">
+								<li>&lt;<span style="color: yellow">grid-row-gap</span>&gt;  &lt;<span style="color: yellow">grid-column-gap</span>&gt; - size values;</li>
+							</ul>
+							<br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container{
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  grid-gap: 10px 15px;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+								You can use a shortend variant of gap property like on this slide
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>justify-items</h3>
+						<div style="font-size: 1.5rem">
+							Aligns the content along the line axis. This value applies to all grid elements within the container.<br>
+							<ul style="margin: 20px; transform: translateX(0px)">Value:
+								<li><span style="color: yellow">start</span> - aligns the content on the left side of the area;</li>
+								<li><span style="color: yellow">end</span> - aligns the content on the right side of the area;</li>
+								<li><span style="color: yellow">center</span> - aligns the contents to the center of the area;</li>
+								<li><span style="color: yellow">stretch</span> - fills the entire width of the area (by default);</li>
+							</ul>
+							<br><br>
+							<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-items: start | end | center | stretch;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							justify-items
+							<br>Aligns the content along the line axis. This value applies to all grid elements within the container.
+							<br><br>
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+							<h3>justify-items</h3>
+							<div style="font-size: 1.5rem">
+								<ul style="margin: 20px; transform: translateX(0px)">
+									<li style="display: flex">
+										<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-items: start;
+}
+										</code></pre>
+										<img style="padding: 20px; background-color: #fff;" src="./img/grid-justify-items-start.png" alt="grid-justify-items-start" width="300px" height="200px">
+									</li>
+									<li style="display: flex">
+											<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-items: end;
+}
+											</code></pre>
+											<img style="padding: 20px; background-color: #fff;" src="./img/grid-justify-items-end.png" alt="grid-justify-items-start" width="300px" height="200px">
+										</li>
+								</ul>
+							</div>
+							<aside class="notes">
+								on this slide you can see how it works
+							</aside>
+						</section>
+
+						<section style="text-align: start">
+							<h3>align-items</h3>
+							<div style="font-size: 1.5rem">
+									Aligns the content along the column axis. This value applies to all grid elements within the container.<br>
+								<ul style="margin: 20px; transform: translateX(0px)">Value:
+									<li><span style="color: yellow">start</span> - alignment of elements on the upper part of the area;</li>
+									<li><span style="color: yellow">end</span> - alignment of elements at the bottom of the area;</li>
+									<li><span style="color: yellow">center</span> - alignment of elements in the center of the area;</li>
+									<li><span style="color: yellow">stretch</span> - fills the entire height of the area (by default);</li>
+								</ul>
+								<br><br>
+								<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-items: start | end | center | stretch;
+}
+								</code></pre>
+							</div>
+							<aside class="notes">
+								align-items
+								<br>Aligns the content along the column axis. 
+								<br>This value applies to all grid elements within the container.
+								<br>
+							</aside>
+						</section>
+	
+						<section style="text-align: start">
+							<h3>align-items</h3>
+							<div style="font-size: 1.5rem">
+								<ul style="margin: 20px; transform: translateX(0px)">
+									<li style="display: flex">
+										<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-items: start;
+}
+										</code></pre>
+										<img style="padding: 20px; background-color: #fff;" src="./img/grid-align-items-start.png" alt="grid-align-items-start" width="300px" height="200px">
+									</li>
+									<li style="display: flex">
+											<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-items: end;
+}
+											</code></pre>
+											<img style="padding: 20px; background-color: #fff;" src="./img/grid-align-items-end.png" alt="grid-align-items-end" width="300px" height="200px">
+										</li>
+								</ul>
+							</div>
+							<aside class="notes">
+								You can see it here.
+							</aside>
+						</section>
+
+						<section style="text-align: start">
+							<h3>justify-content</h3>
+							<div style="font-size: 1.5rem">
+									Sometimes the total mesh size may be smaller than the size of the container. This can happen if all grid elements have fixed units, for example, <span style="color: blue">px</span>. In this case, you can set the alignment of the grid inside the container. This property aligns the grid along the row axis.<br>
+								<ul style="margin: 20px; transform: translateX(0px)">Value:
+									<li><span style="color: yellow">stretch</span> - scales the elements so that the grid can fill the entire width of the container;</li>
+									<li><span style="color: yellow">space-around</span> - the same space between elements, and half-size indents at the edges;</li>
+									<li><span style="color: yellow">space-between</span> - the same space between the elements, without indents at the edges;</li>
+									<li><span style="color: yellow">space-evenly</span> - the same space between the elements, and full-size indents at the edges;</li>
+								</ul>
+								<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-content: start | end | center | stretch | space-around | space-between 
+  | space-evenly;    
+}
+								</code></pre>
+							</div>
+							<aside class="notes">
+								justify-content
+								Sometimes the total mesh size may be smaller than the size of the container. This can happen if all grid elements have fixed units, for example, px. 
+								<br>In this case, you can set the alignment of the grid inside the container. 
+								<br>This property aligns the grid along the row axis.
+								<br>
+							</aside>
+						</section>
+
+						<section style="text-align: start">
+							<h3>justify-content</h3>
+							<div style="font-size: 1.5rem">
+								<ul style="margin: 20px; transform: translateX(0px)">
+									<li style="display: flex">
+										<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-content: start;
+}
+										</code></pre>
+										<img style="padding: 20px; background-color: #fff;" src="./img/grid-justify-content-start.png" alt="grid-align-items-start" width="300px" height="200px">
+									</li>
+									<li style="display: flex">
+											<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  justify-content: end; 
+}
+											</code></pre>
+											<img style="padding: 20px; background-color: #fff;" src="./img/grid-justify-content-end.png" alt="grid-align-items-end" width="300px" height="200px">
+										</li>
+								</ul>
+							</div>
+							<aside class="notes">
+								Here we can see how this code works. 
+							</aside>
+						</section>
+
+						<section style="text-align: start">
+							<h3>align-content</h3>
+							<div style="font-size: 1.5rem">
+									Sometimes the total mesh size may be smaller than the size of the container. This can happen if all mesh elements have a fixed unit of measurement, for example, <span style="color: blue">px</span>. In this case, you can set the alignment of the grid inside the container. This property aligns the grid along the axis of the column.<br>
+								<ul style="margin: 20px; transform: translateX(0px)">Value:
+									<li><span style="color: yellow">stretch</span> - scales the elements so that the grid can fill the entire height of the container;</li>
+									<li><span style="color: yellow">space-around</span> - the same space between elements, and half-size indents at the edges;</li>
+									<li><span style="color: yellow">space-between</span> - the same space between the elements, without indents at the edges;</li>
+									<li><span style="color: yellow">space-evenly</span> - the same space between the elements, and full-size indents at the edges;</li>
+								</ul>
+								<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-content: start | end | center | stretch | space-around | space-between
+  | space-evenly;  
+}
+								</code></pre>
+							</div>
+							<aside class="notes">
+								In this case, you can set the alignment of the grid inside the container. This property aligns the grid along the column axis.
+								<br>
+							</aside>
+						</section>
+
+						<section style="text-align: start">
+							<h3>align-content</h3>
+							<div style="font-size: 1.5rem">
+								<ul style="margin: 20px; transform: translateX(0px)">
+									<li style="display: flex">
+										<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 600px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-content: start; 
+}
+										</code></pre>
+										<img style="padding: 20px; background-color: #fff;" src="./img/grid-align-content-start.png" alt="grid-align-items-start" width="300px" height="200px">
+									</li>
+									<li style="display: flex">
+											<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 600px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.container {
+  align-content: end;   
+}
+											</code></pre>
+											<img style="padding: 20px; background-color: #fff;" src="./img/grid-align-content-end.png" alt="grid-align-items-end" width="300px" height="200px">
+										</li>
+								</ul>
+							</div>
+							<aside class="notes">
+								You can see it here.
+							</aside>
+						</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h1>Properties of <br>the child elements <br>(Grid item)</h1>
+						<aside class="notes">
+							Properties of <br>the child elements <br>(Grid item)
+						</aside>
+					</section>
+	
+					<section style="text-align: start">
+						<h3>Properties grid item</h3>
+						<div style="display: flex">
+							<ul style="margin: 0px 50px">
+								<li>grid-column-start</li>
+								<li>grid-column-end</li>
+								<li>grid-row-start</li>
+								<li>grid-row-end</li>
+							</ul>
+							<ul style="margin: 0px 50px">
+								<li>grid-column</li>
+								<li>grid-row</li>
+								<li>grid-area</li>
+								<li>justify-self</li>
+								<li>align-self</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Let's talk about the grid item properties
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-column-start grid-column-end<br>grid-row-start grid-row-end</h3>
+						<div style="font-size: 1.5rem">
+								Determine the location in the grid referring to specific lines. <span style="color: yellow">grid-column-start</span> / <span style="color: bly	ue">grid-row-start</span> is the line from which the element starts, 
+								and <span style="color: yellow">grid-column-end</span> / <span style="color: yellow">grid-row-end</span> is the line on which the element ends.<br>
+							<ul style="margin: 20px; transform: translateX(0px)">Value:
+								<li><span style="color: yellow">&lt;line&gt;</span> - can be a number that refers to a numbered line;</li>
+								<li><span style="color: yellow	">span &lt;number&gt;</span> -  is the element that will cover the number of tracks provided;</li>
+								<li><span style="color: yellow">span &lt;name&gt;</span> - the element will span until it reaches the line with the specified name;</li>
+								<li><span style="color: yellow">auto</span> - indicates auto placement, auto reach, or default reach;</li>
+							</ul>
+							<pre style="transform: translateX(-50px); margin: 0px;"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.item {
+  grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto;
+  grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							grid-column-start grid-column-end grid-row-start grid-row-end
+							<br>Determine the location in the grid referring to specific lines. 
+							grid-column-start / grid-row-start is the line from which the element starts, 
+							and grid-column-end / grid-row-end is the line on which the element ends.
+							<br>
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-column-start grid-column-end<br>grid-row-start grid-row-end</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 400px; line-height: 150%; font-size: 1.5rem">
+.item-a {
+  grid-column-start: 2;
+  grid-column-end: five;
+  grid-row-start: row1-start;
+  grid-row-end: 3;
+}
+									</code></pre>
+									<img style="padding: 20px; background-color: #fff;" src="./img/grid-start-end-a_0.png" alt="grid-start-end-a_0" width="500px" height="400px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							This code works like this.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-column-start grid-column-end<br>grid-row-start grid-row-end</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 400px; line-height: 150%; font-size: 1.5rem">
+.item-b {
+  grid-column-start: 1;
+  grid-column-end: 
+  	span col4-start;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+									</code></pre>
+									<img style="padding: 20px; background-color: #fff;" src="./img/grid-start-end-b.png" alt="grid-start-end-b" width="500px" height="400px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Another example to better understand how this works.
+							<br>You can view this in more detail by opening the presentation later. make sure to pause video to do it
+						</aside>
+					</section>
+					<section style="text-align: start">
+						<h3>grid-column & grid-row</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 400px; line-height: 150%; font-size: 1.5rem">
+.item-c {
+  grid-column: 3 / span 2;
+  grid-row: third-line / 4;
+}
+									</code></pre>
+									<img style="padding: 20px; background-color: #fff;" src="./img/grid-start-end-c.png" alt="grid-start-end-c" width="500px" height="400px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							An example of how this can be written shortly
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-area</h3>
+						<div style="font-size: 1.5rem">
+								Gives the name of the element so that it can be referenced using the property created through the grid-template-areas. 
+								Alternatively, this property can be used as a shorthand for <span style="color: yellow">grid-row-start</span> + <span style="color: yellow">grid-column-start</span> + <span style="color: yellow">grid-row-end</span> + <span style="color: yellow">grid-column-end</span>.<br>
+							<ul style="margin: 20px; transform: translateX(0px)">Value:
+								<li><span style="color: yellow">&lt;name&gt;</span> - is the name you select;
+								</li>
+								<li><span style="color: yellow">&lt;row-start&gt;</span> / 
+									<span style="color: yellow">&lt;column-start&gt;</span> / 
+									<span style="color: yellow">&lt;row-end&gt;</span> / 
+									<span style="color: yellow">&lt;column-end&gt;</span> - can be numbering or line names;
+								</li>
+							</ul>
+							<pre style="transform: translateX(-50px); margin: 0px;"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.item {
+  grid-area: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							grid-area
+							Gives the name of the element so that it can be referenced using the property created through the grid-template-areas. 
+							<br>Alternatively, this property can be used as a shorthand for grid-row-start + grid-column-start + grid-row-end + grid-column-end.
+							<br>
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>grid-area</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 400px; line-height: 150%; font-size: 1.5rem">
+.item-d {
+  grid-area:
+   1 / col4-start / last-line / 6
+}
+									</code></pre>
+									<img style="padding: 20px;  background-color: #fff;" src="./img/grid-start-end-d.png" alt="grid-start-end-c" width="500px" height="400px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Here is an example
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>justify-self</h3>
+						<div style="font-size: 1.5rem">
+								Aligns the content of the element along the axis of the string. This value applies to content within a single item.<br>
+							<ul style="margin: 20px; transform: translateX(0px)">Value:
+								<li><span style="color: yellow">start</span> - aligns the content on the left side of the area;</li>
+								<li><span style="color: yellow">end</span> - aligns the content on the right side of the area;</li>
+								<li><span style="color: yellow">center</span> - aligns the contents in the center of the area;</li>
+								<li><span style="color: yellow">stretch</span> - fills the entire width of the area (by default);</li>
+							</ul>
+							<pre style="transform: translateX(-50px); margin: 0px;"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.item {
+  justify-self: start | end | center | stretch;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							So. In the end we will talk about justify-self and align-self
+							<br><br>
+							justify-self
+							<br>Aligns the content of the element along the axis of the string. 
+							<br>This value applies to content within a single item.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>justify-self</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.item-a {
+  justify-self: start;
+}
+									</code></pre>
+									<img style="padding: 20px;  background-color: #fff;" src="./img/grid-justify-self-start.png" alt="grid-justify-self-start" width="500px" height="200px">
+								</li>
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.item-a {
+  justify-self: end;
+}
+									</code></pre>
+									<img style="padding: 20px;  background-color: #fff;" src="./img/grid-justify-self-end.png" alt="grid-justify-self-end" width="500px" height="200px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							You can see it here.
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>align-self</h3>
+						<div style="font-size: 1.5rem">
+								Aligns the contents of the element along the axis of the column. This value applies to content within a single item.<br>
+							<ul style="margin: 20px; transform: translateX(0px)">Value:
+								<li><span style="color: yellow">start</span> - aligns the content to the top of the area;</li>
+								<li><span style="color: yellow">end</span> - aligns the content at the bottom of the area;</li>
+								<li><span style="color: yellow">center</span> - aligns the contents in the center of the area;</li>
+								<li><span style="color: yellow">stretch</span> - fills the entire height of the area (by default);</li>
+							</ul>
+							<pre style="transform: translateX(-50px); margin: 0px;"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 125%; line-height: 150%; font-size: 1.5rem">
+.item {
+  align-self: start | end | center | stretch;
+}
+							</code></pre>
+						</div>
+						<aside class="notes">
+							align-self
+							<br>Aligns the contents of the element along the axis of the column. 
+							<!-- This value applies to content within a single item.
+							start - aligns the content to the top of the area;
+							end - aligns the content at the bottom of the area;
+							center - aligns the contents in the center of the area;
+							stretch - fills the entire height of the area (by default); -->
+						</aside>
+					</section>
+
+					<section style="text-align: start">
+						<h3>align-self</h3>
+						<div style="font-size: 1.5rem">
+							<ul style="margin: 20px; transform: translateX(0px)">
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.item-a {
+  align-self: start;
+}
+									</code></pre>
+									<img style="padding: 20px;  background-color: #fff;" src="./img/grid-align-self-start.png" alt="grid-align-self-start" width="500px" height="200px">
+								</li>
+								<li style="display: flex">
+									<pre style="transform: translateX(-50px)"><code class="css" style="overflow: hidden; padding: 20px; border-radius: 2rem; width: 500px;height: 200px; line-height: 150%; font-size: 1.5rem">
+.item-a {
+  align-self: end;
+}
+									</code></pre>
+									<img style="padding: 20px;  background-color: #fff;" src="./img/grid-align-self-end.png" alt="grid-align-self-end" width="500px" height="200px">
+								</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							This code works like this.
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<aside class="notes">
+						That's all i wanted to tell you about grid layout for today. 
+						<br>Thx for watchig.
+						<br>take care, CU
+					</aside>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'concave', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
